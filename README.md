@@ -1,7 +1,7 @@
 # Enlace BPSK interior con multitrayectoria — Comunicaciones II (27145), Grupo 5
 
 > **Blog:** por indicación del grupo, en esta entrega no se elaboró blog.
-> **Video de socialización (8 min 57 s):** [`video/Video_Socializacion_Grupo5_S3.mp4`](video/Video_Socializacion_Grupo5_S3.mp4) · subtítulos [`video/Video_Socializacion_Grupo5_S3.srt`](video/Video_Socializacion_Grupo5_S3.srt)
+> **Video de socialización (8 min 57 s):** **[YouTube: https://youtu.be/vqxYRCAwkvc](https://youtu.be/vqxYRCAwkvc)** · copia en el repositorio: [`video/Video_Socializacion_Grupo5_S3.mp4`](video/Video_Socializacion_Grupo5_S3.mp4) · subtítulos [`video/Video_Socializacion_Grupo5_S3.srt`](video/Video_Socializacion_Grupo5_S3.srt)
 > **Informe IEEE:** [`docs/informe_final.pdf`](docs/informe_final.pdf)
 
 **Escenario:** S3 · Comunicación interior con multitrayectoria (bodega con estanterías metálicas)

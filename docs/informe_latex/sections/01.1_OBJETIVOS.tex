@@ -1,0 +1,13 @@
+\section{Objetivos y alcance}
+
+\textbf{Objetivo general:} diseñar, simular y evaluar un enlace BPSK Tx--canal--Rx para un sensor en una bodega con multitrayectoria, cuantificando la degradación producida por un eco de ganancia variable.
+
+\textbf{Objetivos específicos:}
+\begin{enumerate}
+    \item Configurar el transmisor con parámetros coherentes ($k$, $R_s$, $R_b$, $Sps$, $f_s$, ancho de banda) a partir del archivo base del curso.
+    \item Modelar el canal como camino directo más un eco $\alpha\,s(t-\tau)$ con AWGN y diseñar un receptor de filtro acoplado, muestreo y decisión.
+    \item Comparar una prueba de referencia con tres niveles de eco (suave, medio y fuerte) mediante PSD, señal temporal, constelación y diagrama de ojo.
+    \item Integrar el instrumento BER vs.\ $E_b/N_0$ de la Fase~4, validar la alineación Tx/Rx y contrastar con la teoría.
+\end{enumerate}
+
+\textbf{Alcance:} un solo eco con retardo fijo $\tau=T_s$ y fase $0^\circ$ (caso más desfavorable en fase), BPSK con pulso rectangular, sincronización ideal en simulación y AWGN de referencia \texttt{noise\_amp}$=0{,}10$. La medición BER se realizó en simulación, sustituyendo el enlace SDR por el canal simulado. Las copias para HackRF One (Fase~3) se compilaron y su cadena de sincronización se verificó en simulación, pero no se probaron con hardware.

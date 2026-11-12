@@ -1,0 +1,11 @@
+
+\begin{abstract}
+This report presents the design and simulation of a BPSK link for an indoor sensor in a warehouse (scenario S3, multipath). The transmitter keeps the course reference parameters ($R_s=32$~kBd, $R_b=32$~kb/s, $Sps=8$, $f_s=256$~kS/s, rectangular pulse). The channel is a direct path plus one echo with complex gain $\alpha$ and delay $\tau=T_s$, followed by AWGN. A receiver was designed with a rectangular matched filter, eye diagram, one-in-eight sampling at the eye maximum, and a zero-threshold decision. Four tests ($|\alpha|=0$; 0.2; 0.5; 0.8) were simulated in GNU Radio and verified on GNU Radio 3.10.12 (Windows) and 3.10.9 (Linux). The echo splits each BPSK point into $\pm1\pm\alpha$, reduces the vertical eye opening as $2(1-|\alpha|)$ and imprints the comb response $|1+\alpha e^{-j2\pi fT_s}|^2$ on the PSD. With the Phase-4 BER instrument (two template bugs corrected), the measured BER matches BPSK theory within 0.05~dB at $10^{-3}$. The echo penalty at BER $=10^{-3}$ is 1.4~dB for $|\alpha|=0.2$ and 6.3~dB for $|\alpha|=0.5$; with $|\alpha|=0.8$ the target is not reached below 14~dB. Hardware (HackRF) flowgraphs were prepared but not tested on hardware.
+\end{abstract}
+
+\begin{IEEEkeywords}
+BPSK, multitrayectoria, interferencia intersimbólica, filtro acoplado, diagrama de ojo, BER, $E_b/N_0$, GNU Radio, SDR.
+\end{IEEEkeywords}
+
+{\raggedright\small
+\textit{Repositorio:} \url{https://github.com/stivenmunoz0133-spec/ComunicacionesII_Grupo5}\par}

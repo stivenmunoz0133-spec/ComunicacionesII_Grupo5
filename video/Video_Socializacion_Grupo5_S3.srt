@@ -1,0 +1,327 @@
+1
+00:00:00,500 --> 00:00:00,891
+Hola.
+
+2
+00:00:00,891 --> 00:00:07,306
+Somos el Grupo 5 de Comunicaciones Dos, de la Universidad Industrial de Santander:
+
+3
+00:00:07,306 --> 00:00:10,279
+Elkin Largo, Stiven Muñoz y Minuk Lee.
+
+4
+00:00:10,279 --> 00:00:14,503
+En este video presentamos nuestro proyecto integrador:
+
+5
+00:00:14,503 --> 00:00:23,030
+un enlace digital BPSK dentro de una bodega, donde la señal llega por un camino directo y también por un eco.
+
+6
+00:00:23,030 --> 00:00:31,244
+La narración usa voces sintéticas; el contenido técnico, las simulaciones y los resultados son del grupo.
+
+7
+00:00:32,644 --> 00:00:34,334
+Elegimos el escenario S3:
+
+8
+00:00:34,334 --> 00:00:37,240
+comunicación interior con multitrayectoria.
+
+9
+00:00:37,240 --> 00:00:45,485
+Un nodo sensor envía variables de baja velocidad, como estado, temperatura o vibración, hacia una estación de supervisión.
+
+10
+00:00:45,485 --> 00:00:48,661
+En la bodega hay estanterías metálicas y muros.
+
+11
+00:00:48,661 --> 00:00:55,352
+Por eso, además del camino directo, al receptor llega una réplica reflejada, más débil y retrasada.
+
+12
+00:00:55,352 --> 00:00:57,109
+Nuestra pregunta guía fue:
+
+13
+00:00:57,109 --> 00:01:01,569
+¿cuánto degrada ese eco al enlace, y cómo se ve en las evidencias?
+
+14
+00:01:01,569 --> 00:01:08,260
+Modelamos el canal como la señal más alfa veces la señal retrasada tau, más ruido blanco gaussiano.
+
+15
+00:01:09,660 --> 00:01:12,545
+Un detalle importante es la escala física.
+
+16
+00:01:12,545 --> 00:01:23,053
+En una bodega real, la diferencia entre el camino directo y el reflejado es de unos pocos metros, es decir, decenas o cientos de nanosegundos de retardo.
+
+17
+00:01:23,053 --> 00:01:30,883
+Nuestro símbolo dura treinta y un microsegundos, así que a esta velocidad el canal real sería prácticamente plano.
+
+18
+00:01:30,883 --> 00:01:33,699
+Por eso fijamos el retardo en un símbolo:
+
+19
+00:01:33,699 --> 00:01:47,436
+es un modelo normalizado, que reproduce lo que ocurriría en la misma bodega si el enlace transmitiera a unos diez megasímbolos por segundo, sin cambiar los parámetros de referencia que exige el curso.
+
+20
+00:01:48,836 --> 00:01:52,338
+Mantuvimos los parámetros de referencia del curso.
+
+21
+00:01:52,338 --> 00:01:55,560
+La modulación es BPSK, con un bit por símbolo.
+
+22
+00:01:55,560 --> 00:02:05,296
+La tasa de símbolos es de treinta y dos mil símbolos por segundo, así que la tasa de bits también es de treinta y dos kilobits por segundo.
+
+23
+00:02:05,296 --> 00:02:13,000
+Con ocho muestras por símbolo, la tasa de muestreo es de doscientas cincuenta y seis mil muestras por segundo.
+
+24
+00:02:13,000 --> 00:02:21,895
+Por eso un retardo de ocho muestras equivale exactamente a un símbolo, es decir, a treinta y un coma veinticinco microsegundos.
+
+25
+00:02:21,895 --> 00:02:29,600
+Como el pulso es rectangular, el lóbulo principal del espectro ocupa sesenta y cuatro kilohercios entre nulos.
+
+26
+00:02:29,600 --> 00:02:36,884
+Elegimos BPSK porque separa al máximo los dos símbolos, y así toda degradación se puede atribuir al eco.
+
+27
+00:02:38,284 --> 00:02:39,984
+Este es el sistema completo.
+
+28
+00:02:39,984 --> 00:02:48,788
+En el transmisor, una fuente aleatoria genera bits, que se mapean a menos uno y más uno y se conforman con un pulso rectangular de ocho muestras.
+
+29
+00:02:48,788 --> 00:02:56,075
+El canal suma el camino directo y una copia retrasada ocho muestras y multiplicada por alfa; después se agrega el ruido.
+
+30
+00:02:56,075 --> 00:02:58,139
+El receptor lo diseñamos nosotros:
+
+31
+00:02:58,139 --> 00:03:10,708
+un filtro acoplado rectangular, un diagrama de ojo para elegir el instante de muestreo, un bloque que conserva una de cada ocho muestras, una decisión por umbral en cero y un medidor de tasa de error de bit.
+
+32
+00:03:12,108 --> 00:03:19,513
+Partimos de una copia del archivo de constelaciones con ruido del curso y conservamos el original sin cambios.
+
+33
+00:03:19,513 --> 00:03:25,571
+Agregamos los bloques Delay, Multiply Const y Add para el eco, y los bloques del receptor.
+
+34
+00:03:25,571 --> 00:03:34,525
+Comprobamos numéricamente que el bloque Keep One in N conserva la muestra ocho k más siete, que es justo el pico del filtro acoplado.
+
+35
+00:03:34,525 --> 00:03:39,708
+Por eso no hace falta retardo para alinear los bits transmitidos y recibidos.
+
+36
+00:03:41,108 --> 00:03:49,603
+Esta es una captura real del flujograma ejecutándose en GNU Radio Companion 3.10 en nuestro computador, en la prueba de referencia, sin eco.
+
+37
+00:03:49,603 --> 00:04:02,223
+La densidad espectral tiene forma de seno cardinal al cuadrado, la constelación muestra dos nubes compactas en más y menos uno, el ojo está completamente abierto y los bits transmitidos y recibidos coinciden:
+
+38
+00:04:02,223 --> 00:04:03,740
+la tasa de error es cero.
+
+39
+00:04:05,140 --> 00:04:10,743
+Ahora la misma interfaz en la prueba media, con alfa igual a cero coma cinco.
+
+40
+00:04:10,743 --> 00:04:16,929
+Con un selector cambiamos solo la magnitud del eco y dejamos todo lo demás constante.
+
+41
+00:04:16,929 --> 00:04:23,697
+La constelación recuperada ya no tiene dos puntos sino cuatro, y el ojo se cierra a la mitad.
+
+42
+00:04:23,697 --> 00:04:27,772
+Aun así, con el ruido de referencia no aparecen errores.
+
+43
+00:04:29,172 --> 00:04:32,561
+En el dominio del tiempo el efecto también es visible.
+
+44
+00:04:32,561 --> 00:04:41,222
+En la prueba media, cuando dos bits seguidos son iguales, el nivel recibido sube a uno coma cinco; cuando cambian, baja a cero coma cinco.
+
+45
+00:04:41,222 --> 00:04:51,828
+La línea punteada es la salida del filtro acoplado, y los puntos negros son los instantes de decisión, al final de cada símbolo, donde el filtro alcanza su valor máximo.
+
+46
+00:04:53,228 --> 00:04:56,354
+Al comparar las cuatro pruebas, el patrón es claro.
+
+47
+00:04:56,354 --> 00:05:06,037
+Cada símbolo recibido vale el símbolo actual más alfa veces el anterior, así que cada punto de la constelación se divide en más o menos uno, más o menos alfa.
+
+48
+00:05:06,037 --> 00:05:09,653
+Esta es la diferencia clave entre ruido y multitrayectoria:
+
+49
+00:05:09,653 --> 00:05:18,479
+el ruido dispersa los puntos al azar alrededor de su posición, mientras que el eco los desplaza de forma determinista según el símbolo anterior.
+
+50
+00:05:18,479 --> 00:05:20,440
+Es interferencia intersimbólica.
+
+51
+00:05:20,440 --> 00:05:29,204
+La apertura del ojo medida fue de uno coma ochenta y cuatro, uno coma cuarenta y seis, cero coma ochenta y seis y cero coma veintiséis voltios.
+
+52
+00:05:30,604 --> 00:05:35,115
+La apertura del ojo sigue la relación dos por uno menos alfa.
+
+53
+00:05:35,115 --> 00:05:39,552
+En frecuencia, el mismo eco convierte al canal en selectivo:
+
+54
+00:05:39,552 --> 00:05:45,025
+su respuesta es uno más alfa por e a la menos j dos pi f T s, al cuadrado.
+
+55
+00:05:45,025 --> 00:05:54,564
+Por eso aparecen mínimos en más y menos dieciséis kilohercios, la mitad de la tasa de símbolos, donde el eco llega en contrafase.
+
+56
+00:05:54,564 --> 00:06:04,252
+Medimos mínimos de menos uno coma nueve, menos seis y menos catorce decibelios, y coinciden casi exactamente con el modelo teórico.
+
+57
+00:06:05,652 --> 00:06:11,029
+Para cuantificar el desempeño integramos el instrumento de medición de la fase cuatro.
+
+58
+00:06:11,029 --> 00:06:20,658
+Un bloque agrega ruido controlado y barre la relación Eb sobre N cero de cero a catorce decibelios; otro bloque compara los bits transmitidos y recibidos.
+
+59
+00:06:20,658 --> 00:06:23,722
+Sin eco, la curva medida sigue la teoría de BPSK:
+
+60
+00:06:23,722 --> 00:06:31,913
+para una tasa de error de diez a la menos tres necesitamos seis coma ochenta decibelios, contra seis coma setenta y nueve teóricos.
+
+61
+00:06:31,913 --> 00:06:33,851
+Esta medición es en simulación:
+
+62
+00:06:33,851 --> 00:06:36,852
+el canal simulado reemplaza al enlace con radio.
+
+63
+00:06:38,252 --> 00:06:42,056
+Este es el flujograma con la instrumentación integrada.
+
+64
+00:06:42,056 --> 00:06:50,978
+El bloque de barrido se ubica justo antes del receptor, con la tasa de muestreo de banda base y la tasa de bits real del sistema.
+
+65
+00:06:50,978 --> 00:06:54,437
+La referencia se toma de los bits antes del mapeo.
+
+66
+00:06:54,437 --> 00:06:59,693
+Para alinear las secuencias probamos distintos retardos en condición limpia:
+
+67
+00:06:59,693 --> 00:07:06,679
+solo con retardo cero la tasa de error es cero; con cualquier otro valor se acerca a cero coma cinco.
+
+68
+00:07:06,679 --> 00:07:12,212
+Usamos cien mil bits por punto y dos barridos completos para cada valor de alfa.
+
+69
+00:07:13,612 --> 00:07:27,471
+La penalización por el eco, a una tasa de error de diez a la menos tres, fue de uno coma cuatro decibelios para el eco suave, de seis coma tres para el medio, y de más de catorce para el fuerte.
+
+70
+00:07:27,471 --> 00:07:34,972
+Con el criterio del proyecto, de máximo dos decibelios, solo el eco suave se puede tolerar sin ecualizar.
+
+71
+00:07:36,372 --> 00:07:43,778
+Durante la integración encontramos dos errores en la plantilla de medición que impedían usarla en GNU Radio tres punto diez.
+
+72
+00:07:43,778 --> 00:07:54,348
+El bloque de curva heredaba de una clase que no es un bloque de Python, y el bloque que guarda el archivo CSV usaba una variable que no existe cuando GNU Radio valida el bloque.
+
+73
+00:07:54,348 --> 00:07:56,140
+Los corregimos y documentamos.
+
+74
+00:07:56,140 --> 00:08:04,979
+También dejamos preparados los flujogramas para el HackRF One, con remuestreo y sincronización de símbolo y de portadora, verificados en simulación.
+
+75
+00:08:04,979 --> 00:08:07,308
+La prueba con hardware queda pendiente.
+
+76
+00:08:08,708 --> 00:08:09,740
+En conclusión:
+
+77
+00:08:09,740 --> 00:08:14,532
+un eco retardado un símbolo produce interferencia intersimbólica.
+
+78
+00:08:14,532 --> 00:08:22,936
+La constelación se desdobla, el ojo se cierra según uno menos alfa y, en frecuencia, el canal se vuelve selectivo.
+
+79
+00:08:22,936 --> 00:08:33,184
+El receptor de filtro acoplado reproduce la teoría de BPSK, y a partir de un eco de magnitud cero coma cinco se necesitaría un ecualizador.
+
+80
+00:08:33,184 --> 00:08:43,652
+Como trabajo futuro proponemos probar con el radio por cable, estudiar la fase del eco y varios ecos, e implementar un ecualizador adaptativo.
+
+81
+00:08:45,052 --> 00:08:54,172
+Todos los archivos, los flujogramas, las figuras, los datos, el informe y la bitácora están en el repositorio del grupo.
+
+82
+00:08:54,172 --> 00:08:55,996
+Gracias por su atención.

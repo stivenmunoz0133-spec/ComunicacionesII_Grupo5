@@ -1,0 +1,86 @@
+{
+  "EbN0_1e-3_BPSK_AWGN_teorico_dB": 6.789521494366425,
+  "por_alpha": {
+    "0.0": {
+      "EbN0_1e-3_medido_dB": 6.802184109192389,
+      "EbN0_1e-3_teorico_dB": 6.789521494366425,
+      "puntos_sin_errores": [
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0
+      ],
+      "BER_0dB": 0.07943999767303,
+      "BER_14dB": 0.0,
+      "penalizacion_vs_referencia_dB": 0.0,
+      "diferencia_medido_teorico_dB": 0.012662614825964091
+    },
+    "0.2": {
+      "EbN0_1e-3_medido_dB": 8.23987628933093,
+      "EbN0_1e-3_teorico_dB": 8.284256974252845,
+      "puntos_sin_errores": [
+        13.0,
+        14.0
+      ],
+      "BER_0dB": 0.09226794540882,
+      "BER_14dB": 0.0,
+      "penalizacion_vs_referencia_dB": 1.4376921801385407,
+      "diferencia_medido_teorico_dB": -0.04438068492191505
+    },
+    "0.5": {
+      "EbN0_1e-3_medido_dB": 13.114669594323496,
+      "EbN0_1e-3_teorico_dB": 13.161683793276922,
+      "puntos_sin_errores": [],
+      "BER_0dB": 0.1492300033569,
+      "BER_14dB": 0.0003892215609085,
+      "penalizacion_vs_referencia_dB": 6.312485485131107,
+      "diferencia_medido_teorico_dB": -0.04701419895342518
+    },
+    "0.8": {
+      "EbN0_1e-3_medido_dB": null,
+      "EbN0_1e-3_teorico_dB": null,
+      "puntos_sin_errores": [],
+      "BER_0dB": 0.2139749974012,
+      "BER_14dB": 0.06773000210524
+    }
+  },
+  "calibracion": [
+    [
+      0,
+      0.0
+    ],
+    [
+      1,
+      0.5280026400132001
+    ],
+    [
+      2,
+      0.5080000800008
+    ],
+    [
+      3,
+      0.4979974699620494
+    ],
+    [
+      4,
+      0.5080001600032
+    ],
+    [
+      5,
+      0.5159928998224955
+    ],
+    [
+      6,
+      0.5040051201536047
+    ],
+    [
+      7,
+      0.4939972899051467
+    ],
+    [
+      8,
+      0.5279961198447938
+    ]
+  ]
+}

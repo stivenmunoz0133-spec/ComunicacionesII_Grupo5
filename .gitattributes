@@ -1,0 +1,4 @@
+*.grc text eol=lf
+*.mp4 binary
+*.pptx binary
+*.pdf binary

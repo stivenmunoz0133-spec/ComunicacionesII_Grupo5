@@ -1,0 +1,4 @@
+offset_frecuencia_Hz,error_reloj_ppm,ruido_voltaje,retardo_bits_mod1000,polaridad,BER_100000_bits,EVM_pct
+0,0,0.0,996,invertida,0,1.5
+1500,50,0.05,996,invertida,0,1.8
+3000,100,0.1,996,invertida,0,2.9

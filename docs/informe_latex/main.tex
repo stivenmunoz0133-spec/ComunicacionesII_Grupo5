@@ -1,0 +1,112 @@
+\UseRawInputEncoding
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+
+\usepackage[utf8]{inputenc}  
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla,es-nodecimaldot,es-noshorthands]{babel}     
+\usepackage{textcomp}        
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{siunitx}                
+\DeclareSIUnit\dbi{dBi}
+\usepackage{graphicx}           
+\usepackage{float}                 
+\usepackage{placeins}     
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}           
+\usepackage{cite}             
+\usepackage{booktabs}
+\usepackage{caption}             
+\captionsetup{labelfont=bf, textfont=normalfont} 
+\usepackage{listings}                
+\usepackage{listingsutf8}             
+\usepackage{xcolor}               
+\definecolor{codebg}{RGB}{248,248,248}
+\definecolor{codeframe}{RGB}{220,220,220}
+\definecolor{codekw}{RGB}{0,92,197}
+\definecolor{codestr}{RGB}{163,21,21}
+\definecolor{codecmt}{RGB}{0,128,0}
+% Creación del estilo "bonito" para Python / bloques de código de antena
+\lstdefinestyle{bonito}{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{codekw}\bfseries,
+    stringstyle=\color{codestr},
+    commentstyle=\color{codecmt}\itshape,
+    numberstyle=\tiny\color{gray},
+    numbers=left,
+    stepnumber=1,
+    frame=single,
+    rulecolor=\color{codeframe},
+    frameround=tttt,
+    framesep=6pt,
+    tabsize=2,
+    showstringspaces=false,
+    breaklines=true,
+    upquote=true,
+    % Configuración para evitar desbordamientos a la izquierda
+    xleftmargin=2em,
+    framexleftmargin=2em,
+    numbersep=8pt
+}
+
+\raggedbottom                
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.2ex plus .3ex minus .2ex}{0.8ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .3ex minus .2ex}{0.6ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus .2ex minus .2ex}{0.5ex}
+
+\setlength{\parskip}{0pt}           
+
+\usepackage{enumitem}
+\setlist{nosep}                     
+
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{0pt}
+\setlength{\textfloatsep}{10pt plus 1pt minus 2pt}
+\setlength{\floatsep}{8pt plus 1pt minus 2pt}
+\setlength{\intextsep}{8pt plus 1pt minus 2pt}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\sisetup{output-decimal-marker={,}}
+\graphicspath{{Figuras/}}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Enlace BPSK interior con multitrayectoria: diseño Tx--canal--Rx, receptor de filtro acoplado y caracterización BER vs. $E_b/N_0$ en GNU Radio\\
+\large Proyecto Integrador de Comunicaciones II (27145) -- Escenario S3 -- Grupo 5}
+\author{\IEEEauthorblockN{Elkin Largo}
+\IEEEauthorblockA{\textit{Universidad Industrial de Santander} \\
+Bucaramanga, Colombia \\
+Código: 2182334 \\
+Email: elkin2182334@gmail.com}
+\and
+\IEEEauthorblockN{Stiven Muñoz}
+\IEEEauthorblockA{\textit{Universidad Industrial de Santander} \\
+Bucaramanga, Colombia \\
+Código: 2224110 \\
+Email: stiven2224110@correo.uis.edu.co}
+\and
+\IEEEauthorblockN{Minuk Lee}
+\IEEEauthorblockA{\textit{Universidad Industrial de Santander} \\
+Bucaramanga, Colombia \\
+Email: minuk2220408@correo.uis.edu.co}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+\input{sections/00_ABSTRACT}
+\input{sections/01_INTRODUCCION}
+\input{sections/01.1_OBJETIVOS}
+\input{sections/02_METODOLOGIA}
+\input{sections/03_RESULTADOS}
+\input{sections/04_CONCLUSIONES}
+\input{sections/04.1_ANEXOS}
+\input{sections/05_REFERENCIAS_BIBLIOGRAFICAS}
+\end{document}

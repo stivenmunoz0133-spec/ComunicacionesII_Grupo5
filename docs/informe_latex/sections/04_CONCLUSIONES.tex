@@ -1,0 +1,9 @@
+\section{Conclusiones}
+
+\begin{enumerate}
+    \item Con BPSK y pulso rectangular ($R_s=32$~kBd, $R_b=32$~kb/s, $Sps=8$, $f_s=256$~kS/s, $BW_{\text{nulo-nulo}}=64$~kHz), el único mecanismo de degradación observado fue el eco. Esto permitió atribuirle sin ambigüedad cada cambio en las evidencias.
+    \item El eco con $\tau=T_s$ actúa como ISI de un símbolo: desdobla la constelación en $\pm1\pm\alpha$ y reduce la apertura del ojo según $2(1-|\alpha|)$ (1,84; 1,46; 0,86 y 0,26~V medidos para $|\alpha|=0$; 0,2; 0,5 y 0,8). En frecuencia se manifiesta como el peine $|1+\alpha e^{-j2\pi fT_s}|^2$, con mínimos de hasta $-14$~dB en $\pm R_s/2$, lo que confirma la hipótesis planteada.
+    \item El receptor de filtro acoplado, con muestreo en la muestra $8k+7$ y decisión por umbral cero, recuperó los bits sin errores en las cuatro pruebas con el ruido de referencia, y en AWGN reprodujo la curva teórica de BPSK con una diferencia de 0,01~dB a BER $=10^{-3}$.
+    \item La penalización por eco a BER $=10^{-3}$ fue de 1,4~dB ($|\alpha|=0{,}2$), 6,3~dB ($|\alpha|=0{,}5$) y más de 14~dB ($|\alpha|=0{,}8$; 15,5~dB teórica). Con el criterio de 2~dB, solo el eco suave es aceptable sin ecualización.
+    \item Al trasladar este caso a una bodega real, un retardo de unos 100~ns produce ISI solo si $R_s$ es del orden de 10~MBd. Para tasas más altas o ecos fuertes se recomienda un ecualizador adaptativo (LMS/DFE) o modulación multiportadora. Como trabajo futuro quedan la validación con HackRF One, con los archivos ya preparados, y el estudio de la fase del eco y de varios ecos.
+\end{enumerate}
